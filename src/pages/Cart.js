@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { remove } from "../store/cartSlice"; // Import the remove action
+import { remove } from "../store/cartSlice"; 
+import { CiTrash } from "react-icons/ci";
+
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart);
@@ -32,10 +34,8 @@ console.log(cartItems.length);
                 <div className="flex items-center justify-between w-full mb-4">
                   <h5 className="font-manrope font-bold text-2xl leading-9 text-gray-900">{item.title}</h5>
                   <button className="rounded-full group flex items-center justify-center" onClick={() => handleRemove(item.id)}>
-                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle className="fill-red-50 transition-all duration-500 group-hover:fill-red-400" cx="17" cy="17" r="17" fill="" />
-                      <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white" d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997" stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
-                    </svg>
+                  <CiTrash className="w-6 h-6" />
+
                   </button>
                 </div>
                 <p className="font-normal text-base leading-7 text-gray-500 mb-6">{item.description}</p>
@@ -56,9 +56,7 @@ console.log(cartItems.length);
               Subtotal
             </h5>
             <div className="flex items-center justify-between gap-5">
-              <button className="rounded-full py-2.5 px-3 bg-indigo-50 text-indigo-600 font-semibold text-xs transition-all duration-500 hover:bg-indigo-100">
-                Promo Code?
-              </button>
+             
               <h6 className="font-manrope font-bold text-3xl leading-10 text-indigo-600">
                 ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
               </h6>
